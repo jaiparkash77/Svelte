@@ -1,0 +1,35 @@
+<script>
+	let firstName = 'JP';
+	let lastName = 'Maurya';
+	let beltColor = 'black';
+
+	// Reactive value
+	$: fullName = `${firstName} ${lastName}`;
+
+	// Reactive Statement
+	// $: console.log(beltColor);	//or
+	
+	$: {
+		console.log(beltColor);	
+		console.log(fullName);	
+	}
+
+
+	const handleClick = () => {
+		beltColor = 'orange'
+	};
+
+	const handleInput = (e) => {
+		beltColor = e.target.value;
+	};
+</script>
+
+<main>
+	<!-- <p style="color: {beltColor}">{beltColor} belt</p> -->
+	<!-- <button on:click={handleClick}>update belt color</button> -->
+	<!-- <input type="text" on:input={handleInput} value={beltColor}> -->
+	<p>{fullName} - {beltColor} belt</p>
+	<input type="text" bind:value={firstName}>
+	<input type="text" bind:value={lastName}>
+	<input type="text" bind:value={beltColor}>
+</main>
